@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christa Wagner — Good Food, Old Houses & Everything In Between</title>
+  <meta name="description" content="Home cook, renovation enthusiast, and golden retriever mom based in Massachusetts. Recipes, renovation updates, and all the things that make life feel good.">
+  <meta property="og:title" content="Christa Wagner — Lifestyle">
+  <meta property="og:description" content="Good food, old houses, and everything in between. Recipes, renovation updates, and cozy New England living.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      /* Type Scale */
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+
+      /* Spacing */
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      /* Fonts */
+      --font-display: 'Zodiak', 'Georgia', serif;
+      --font-body: 'Satoshi', 'Helvetica Neue', sans-serif;
+
+      /* Brand Colors — warm editorial palette */
+      --color-bg:           #FAF7F2;
+      --color-surface:      #F5F1EA;
+      --color-surface-2:    #EDE8DF;
+      --color-text:         #2C2926;
+      --color-text-muted:   #6B6560;
+      --color-text-faint:   #A39E97;
+      --color-accent:       #C4785B;
+      --color-accent-hover: #B06848;
+      --color-accent-light: rgba(196, 120, 91, 0.10);
+      --color-sage:         #8B9E7E;
+      --color-sage-light:   rgba(139, 158, 126, 0.10);
+      --color-border:       #E8E3DB;
+      --color-border-dark:  #D8D2C8;
+
+      /* Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+
+      /* Transitions */
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(44, 41, 38, 0.05);
+      --shadow-md: 0 4px 16px rgba(44, 41, 38, 0.08);
+      --shadow-lg: 0 12px 32px rgba(44, 41, 38, 0.10);
+
+      /* Content widths */
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+    }
+
+    /* ===== BASE RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      min-height: 100dvh;
+      line-height: 1.6;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; font-family: var(--font-display); }
+    p, li, figcaption { text-wrap: pretty; max-width: 72ch; }
+    button { cursor: pointer; background: none; border: none; }
+    ul { list-style: none; }
+
+    a, button, [role="button"], input, textarea, select {
+      transition: color var(--transition-interactive),
+                  background var(--transition-interactive),
+                  border-color var(--transition-interactive),
+                  box-shadow var(--transition-interactive),
+                  transform var(--transition-interactive);
+    }
+
+    ::selection {
+      background: rgba(196, 120, 91, 0.20);
+      color: var(--color-text);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(250, 247, 242, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header--scrolled {
+      border-bottom-color: var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header__logo {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .header__nav-links {
+      display: flex;
+      gap: var(--space-6);
+    }
+
+    .header__nav-links a {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .header__nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-accent);
+      transition: width 0.3s var(--ease-out);
+    }
+
+    .header__nav-links a:hover {
+      color: var(--color-text);
+    }
+
+    .header__nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .header__tiktok {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-accent);
+      text-decoration: none;
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--color-accent);
+      border-radius: var(--radius-xl);
+    }
+
+    .header__tiktok:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .header__tiktok svg {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      padding: var(--space-2);
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+      background: rgba(250, 247, 242, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-8);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-out);
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-interactive);
+    }
+
+    .mobile-nav a:hover {
+      color: var(--color-accent);
+    }
+
+    @media (max-width: 768px) {
+      .header__nav-links,
+      .header__tiktok {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-nav {
+        display: flex;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-16) var(--space-6);
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(44, 41, 38, 0.72) 0%,
+        rgba(44, 41, 38, 0.35) 40%,
+        rgba(44, 41, 38, 0.10) 100%
+      );
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--content-default);
+      margin: 0 auto;
+      width: 100%;
+      padding-bottom: var(--space-8);
+    }
+
+    .hero__label {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: var(--space-6);
+      max-width: 16ch;
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-base);
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      max-width: 48ch;
+      margin-bottom: var(--space-8);
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--color-accent);
+      color: #fff;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-xl);
+      text-decoration: none;
+      border: none;
+    }
+
+    .hero__cta:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(196, 120, 91, 0.3);
+    }
+
+    .hero__cta:active {
+      transform: translateY(0);
+    }
+
+    .hero__cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ===== SECTION UTILS ===== */
+    .section {
+      padding: clamp(var(--space-12), 8vw, var(--space-24)) var(--space-6);
+    }
+
+    .section__container {
+      max-width: var(--content-wide);
+      margin: 0 auto;
+    }
+
+    .section__container--narrow {
+      max-width: var(--content-default);
+      margin: 0 auto;
+    }
+
+    .section__label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
+    }
+
+    .section__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      color: var(--color-text);
+      margin-bottom: var(--space-4);
+    }
+
+    .section__subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 52ch;
+      line-height: 1.7;
+    }
+
+    .section__header {
+      margin-bottom: clamp(var(--space-8), 4vw, var(--space-12));
+    }
+
+    /* ===== CONTENT PILLARS ===== */
+    .pillars {
+      background: var(--color-bg);
+    }
+
+    .pillars__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 768px) {
+      .pillars__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+    }
+
+    .pillar-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-6);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-border-dark);
+    }
+
+    .pillar-card:active {
+      transform: translateY(0);
+    }
+
+    .pillar-card__icon {
+      width: 40px;
+      height: 40px;
+      color: var(--color-accent);
+    }
+
+    .pillar-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+    }
+
+    .pillar-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .pillar-card__link {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      margin-top: auto;
+    }
+
+    .pillar-card__link svg {
+      width: 14px;
+      height: 14px;
+      transition: transform var(--transition-interactive);
+    }
+
+    .pillar-card:hover .pillar-card__link svg {
+      transform: translateX(3px);
+    }
+
+    /* ===== FEATURED / LATEST ===== */
+    .featured {
+      background: var(--color-surface);
+    }
+
+    .featured__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: var(--space-6);
+    }
+
+    .featured__grid .feature-card:first-child {
+      grid-row: 1 / 3;
+    }
+
+    @media (max-width: 768px) {
+      .featured__grid {
+        grid-template-columns: 1fr;
+      }
+      .featured__grid .feature-card:first-child {
+        grid-row: auto;
+      }
+    }
+
+    .feature-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .feature-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .feature-card:active {
+      transform: translateY(0);
+    }
+
+    .feature-card__image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: var(--color-surface-2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured__grid .feature-card:first-child .feature-card__image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .feature-card__image-pattern {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+
+    .feature-card__body {
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      flex: 1;
+    }
+
+    .feature-card__tag {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .feature-card__tag--sage {
+      color: var(--color-sage);
+    }
+
+    .feature-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .feature-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    .feature-card__read {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      margin-top: auto;
+      padding-top: var(--space-2);
+    }
+
+    .feature-card__read svg {
+      width: 14px;
+      height: 14px;
+      transition: transform var(--transition-interactive);
+    }
+
+    .feature-card:hover .feature-card__read svg {
+      transform: translateX(3px);
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: var(--color-bg);
+    }
+
+    .about__layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .about__layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about__headline {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: var(--space-6);
+      color: var(--color-text);
+    }
+
+    .about__text {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+
+    .about__social-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+    }
+
+    .about__social-proof svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-text);
+    }
+
+    .about__social-stat {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .about__social-stat span {
+      color: var(--color-text-muted);
+      font-weight: 400;
+    }
+
+    .about__right {
+      position: relative;
+    }
+
+    .about__quote-block {
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-sage);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .about__quote {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    .about__values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    .about__value-tag {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      border-radius: var(--radius-xl);
+    }
+
+    .about__value-tag--sage {
+      background: var(--color-sage-light);
+      color: var(--color-sage);
+    }
+
+    /* ===== SHOP ===== */
+    .shop {
+      background: var(--color-surface);
+    }
+
+    .shop__inner {
+      max-width: var(--content-narrow);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .shop__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      margin-bottom: var(--space-4);
+    }
+
+    .shop__desc {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin: 0 auto var(--space-8);
+      max-width: 48ch;
+    }
+
+    .shop__form {
+      display: flex;
+      gap: var(--space-3);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .shop__input {
+      flex: 1;
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      font-size: var(--text-sm);
+      outline: none;
+    }
+
+    .shop__input::placeholder {
+      color: var(--color-text-faint);
+    }
+
+    .shop__input:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(196, 120, 91, 0.1);
+    }
+
+    .shop__btn {
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-accent);
+      color: #fff;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-lg);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .shop__btn:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .shop__btn:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 480px) {
+      .shop__form {
+        flex-direction: column;
+      }
+    }
+
+    /* ===== CONNECT ===== */
+    .connect {
+      background: var(--color-bg);
+    }
+
+    .connect__inner {
+      max-width: var(--content-narrow);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .connect__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      margin-bottom: var(--space-3);
+    }
+
+    .connect__subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-8);
+    }
+
+    .connect__links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .connect__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      padding: var(--space-3) var(--space-8);
+      border-radius: var(--radius-xl);
+      min-width: 220px;
+      justify-content: center;
+    }
+
+    .connect__link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .connect__link--primary {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
+
+    .connect__link--primary:hover {
+      background: #1a1816;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .connect__link--secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .connect__link--secondary:hover {
+      border-color: var(--color-border-dark);
+      background: var(--color-surface);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: var(--space-8) var(--space-6);
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+
+    .footer__inner {
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .footer__left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    .footer__copyright {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .footer__credit {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+    }
+
+    .footer__credit a {
+      color: var(--color-text-faint);
+      text-decoration: none;
+      transition: color var(--transition-interactive);
+    }
+
+    .footer__credit a:hover {
+      color: var(--color-text-muted);
+    }
+
+    .footer__social a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color var(--transition-interactive);
+    }
+
+    .footer__social a:hover {
+      color: var(--color-accent);
+    }
+
+    .footer__social svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .footer__inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .footer__left {
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      max-width: var(--content-default);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .divider__line {
+      width: 48px;
+      height: 1px;
+      background: var(--color-border-dark);
+      margin: 0 auto;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== DECORATIVE SVG PATTERNS ===== */
+    .pattern-herbs {
+      background:
+        radial-gradient(circle at 25% 35%, rgba(139, 158, 126, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(196, 120, 91, 0.08) 0%, transparent 45%),
+        linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
+    }
+
+    .pattern-warm {
+      background:
+        radial-gradient(circle at 30% 70%, rgba(196, 120, 91, 0.10) 0%, transparent 50%),
+        radial-gradient(circle at 75% 30%, rgba(139, 158, 126, 0.08) 0%, transparent 45%),
+        linear-gradient(160deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
+    }
+
+    .pattern-sage {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(139, 158, 126, 0.15) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(196, 120, 91, 0.06) 0%, transparent 40%),
+        linear-gradient(170deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main" class="sr-only" style="position:absolute;top:-100%;left:0;padding:1rem;background:var(--color-accent);color:#fff;z-index:200;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to content</a>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="#" class="header__logo">Christa Wagner</a>
+    <nav class="header__nav" aria-label="Main navigation">
+      <div class="header__nav-links">
+        <a href="#recipes">Recipes</a>
+        <a href="#renovation">Renovation</a>
+        <a href="#about">About</a>
+        <a href="#shop">Shop</a>
+      </div>
+      <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="header__tiktok" aria-label="Follow on TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.28 0 .56.04.82.11V9a6.27 6.27 0 0 0-.82-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.8a8.23 8.23 0 0 0 4.8 1.54V6.89a4.85 4.85 0 0 1-1.04-.2z"/></svg>
+        Follow
+      </a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#recipes" class="mobile-nav-link">Recipes</a>
+    <a href="#renovation" class="mobile-nav-link">Renovation</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#shop" class="mobile-nav-link">Shop</a>
+    <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">TikTok</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="assets/hero.jpg" alt="Warm New England kitchen scene with fresh herbs, lemons, and morning light" loading="eager" decoding="async" width="1600" height="1000">
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content">
+      <p class="hero__label reveal">Cooking · Renovating · Living</p>
+      <h1 class="hero__title reveal reveal-delay-1">Good food, old houses, and everything in between.</h1>
+      <p class="hero__subtitle reveal reveal-delay-2">I'm Christa — a home cook, renovation enthusiast, and lover of all things cozy. Welcome to my corner of New England.</p>
+      <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="hero__cta reveal reveal-delay-3">
+        Follow Along
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Content Pillars -->
+    <section class="section pillars" id="recipes">
+      <div class="section__container">
+        <div class="section__header reveal">
+          <p class="section__label">What I Share</p>
+          <h2 class="section__title">A little bit of everything good.</h2>
+        </div>
+        <div class="pillars__grid">
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="pillar-card reveal reveal-delay-1">
+            <svg class="pillar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 6v4l3-2c1.2.6 2.6 1 4 1 5.52 0 10-4 10-8S17.52 2 12 2z"/>
+              <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+              <path d="M3 14c0 0 2-1 4-1s4 2 6 2 3-1 4-1"/>
+            </svg>
+            <h3 class="pillar-card__title">Recipes</h3>
+            <p class="pillar-card__desc">From-scratch meals, seasonal favorites, and the recipes my family asks for again and again.</p>
+            <span class="pillar-card__link">
+              Explore
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="pillar-card reveal reveal-delay-2" id="renovation">
+            <svg class="pillar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 21h18"/>
+              <path d="M5 21V7l7-4 7 4v14"/>
+              <path d="M9 21v-6h6v6"/>
+              <rect x="9" y="9" width="2" height="2" rx="0.5"/>
+              <rect x="13" y="9" width="2" height="2" rx="0.5"/>
+            </svg>
+            <h3 class="pillar-card__title">Our Old House</h3>
+            <p class="pillar-card__desc">We're renovating an early 1800s New England home, one room at a time. Follow the journey.</p>
+            <span class="pillar-card__link">
+              Explore
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="pillar-card reveal reveal-delay-3">
+            <svg class="pillar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <h3 class="pillar-card__title">Favorites</h3>
+            <p class="pillar-card__desc">Weekly finds, kitchen essentials, home products, and things I genuinely love.</p>
+            <span class="pillar-card__link">
+              Explore
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured / Latest -->
+    <section class="section featured">
+      <div class="section__container">
+        <div class="section__header reveal">
+          <p class="section__label">Latest</p>
+          <h2 class="section__title">Fresh from the kitchen & the reno.</h2>
+        </div>
+        <div class="featured__grid">
+          <!-- Large feature card -->
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="feature-card reveal reveal-delay-1">
+            <div class="feature-card__image pattern-herbs" role="img" aria-label="Mediterranean chicken bowls illustration">
+              <svg class="feature-card__image-pattern" viewBox="0 0 400 300" fill="none" aria-hidden="true">
+                <circle cx="80" cy="120" r="60" fill="rgba(139,158,126,0.08)"/>
+                <circle cx="300" cy="80" r="45" fill="rgba(196,120,91,0.06)"/>
+                <circle cx="200" cy="220" r="80" fill="rgba(139,158,126,0.05)"/>
+                <path d="M150 50 Q200 30 250 55 Q230 90 180 80Z" fill="rgba(139,158,126,0.06)"/>
+                <path d="M60 200 Q110 180 120 230 Q80 250 60 200Z" fill="rgba(196,120,91,0.05)"/>
+              </svg>
+            </div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Recipe</span>
+              <h3 class="feature-card__title">Mediterranean Chicken Bowls</h3>
+              <p class="feature-card__desc">Bright, herby, and on the table in under 30 minutes. This has been on repeat all spring — the kind of meal that tastes like you tried way harder than you did.</p>
+              <span class="feature-card__read">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </div>
+          </a>
+          <!-- Smaller cards -->
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="feature-card reveal reveal-delay-2">
+            <div class="feature-card__image pattern-warm" role="img" aria-label="Hardwood floors renovation">
+              <svg class="feature-card__image-pattern" viewBox="0 0 400 250" fill="none" aria-hidden="true">
+                <rect x="30" y="40" width="120" height="8" rx="2" fill="rgba(196,120,91,0.10)"/>
+                <rect x="30" y="56" width="120" height="8" rx="2" fill="rgba(196,120,91,0.07)"/>
+                <rect x="30" y="72" width="120" height="8" rx="2" fill="rgba(196,120,91,0.10)"/>
+                <rect x="170" y="48" width="120" height="8" rx="2" fill="rgba(196,120,91,0.08)"/>
+                <rect x="170" y="64" width="120" height="8" rx="2" fill="rgba(196,120,91,0.06)"/>
+                <circle cx="320" cy="160" r="50" fill="rgba(196,120,91,0.06)"/>
+              </svg>
+            </div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag feature-card__tag--sage">Renovation</span>
+              <h3 class="feature-card__title">We Found Hardwood Floors Under the Carpet</h3>
+              <p class="feature-card__desc">Sometimes the best part of an old house is what's hiding underneath. The reveal was worth every blister.</p>
+              <span class="feature-card__read">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="feature-card reveal reveal-delay-3">
+            <div class="feature-card__image pattern-sage" role="img" aria-label="Spring favorites collection">
+              <svg class="feature-card__image-pattern" viewBox="0 0 400 250" fill="none" aria-hidden="true">
+                <circle cx="100" cy="125" r="40" fill="rgba(139,158,126,0.10)"/>
+                <circle cx="220" cy="90" r="25" fill="rgba(196,120,91,0.07)"/>
+                <circle cx="300" cy="160" r="55" fill="rgba(139,158,126,0.06)"/>
+                <path d="M180 180 Q200 150 240 170 Q220 200 180 180Z" fill="rgba(139,158,126,0.08)"/>
+              </svg>
+            </div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Lifestyle</span>
+              <h3 class="feature-card__title">This Week's Favorites: Spring Edition</h3>
+              <p class="feature-card__desc">New candle obsession, a farmers market haul, and the linen napkins I can't stop buying.</p>
+              <span class="feature-card__read">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="section__container">
+        <div class="about__layout">
+          <div class="about__left">
+            <p class="section__label reveal">About</p>
+            <h2 class="about__headline reveal reveal-delay-1">Hi, I'm Christa</h2>
+            <p class="about__text reveal reveal-delay-2">I'm a home cook, renovation enthusiast, and golden retriever mom based in Massachusetts. My fiancé and I are in the middle of restoring our early 1800s New England home — think original hardwood floors, 200-year-old character, and a whole lot of demo days.</p>
+            <p class="about__text reveal reveal-delay-2">When I'm not swinging a hammer or in the kitchen, you'll find me exploring local coffee shops, thrifting for vintage finds, or at the beach with our dog Leo. I started sharing our journey on TikTok, and this site is the next chapter — a place for recipes, renovation updates, and all the things that make this life feel good.</p>
+            <div class="about__social-proof reveal reveal-delay-3">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.28 0 .56.04.82.11V9a6.27 6.27 0 0 0-.82-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.8a8.23 8.23 0 0 0 4.8 1.54V6.89a4.85 4.85 0 0 1-1.04-.2z"/></svg>
+              <span class="about__social-stat">2,500+ followers <span>· 208K likes on TikTok</span></span>
+            </div>
+          </div>
+          <div class="about__right reveal reveal-delay-2">
+            <div class="about__quote-block">
+              <p class="about__quote">"A place for recipes, renovation updates, and all the things that make this life feel good."</p>
+            </div>
+            <div class="about__values">
+              <span class="about__value-tag">Home Cook</span>
+              <span class="about__value-tag about__value-tag--sage">Renovation</span>
+              <span class="about__value-tag">New England</span>
+              <span class="about__value-tag about__value-tag--sage">Golden Retriever Mom</span>
+              <span class="about__value-tag">Vintage Finds</span>
+              <span class="about__value-tag about__value-tag--sage">Coffee Lover</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section class="section shop" id="shop">
+      <div class="shop__inner">
+        <p class="section__label reveal">Coming Soon</p>
+        <h2 class="shop__title reveal reveal-delay-1">Shop My Favorites</h2>
+        <p class="shop__desc reveal reveal-delay-2">A curated collection of kitchen essentials, home finds, and things I use every day. Coming soon.</p>
+        <form class="shop__form reveal reveal-delay-3" onsubmit="event.preventDefault();">
+          <label for="shop-email" class="sr-only">Email address</label>
+          <input type="email" id="shop-email" class="shop__input" placeholder="Your email address" autocomplete="email">
+          <button type="submit" class="shop__btn">Notify Me</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider__line"></div>
+    </div>
+
+    <!-- Connect -->
+    <section class="section connect">
+      <div class="connect__inner">
+        <p class="section__label reveal">Say Hi</p>
+        <h2 class="connect__title reveal reveal-delay-1">Let's Connect</h2>
+        <p class="connect__subtitle reveal reveal-delay-1">Come hang out — I share new recipes, reno updates, and daily life over on TikTok.</p>
+        <div class="connect__links reveal reveal-delay-2">
+          <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="connect__link connect__link--primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.28 0 .56.04.82.11V9a6.27 6.27 0 0 0-.82-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.8a8.23 8.23 0 0 0 4.8 1.54V6.89a4.85 4.85 0 0 1-1.04-.2z"/></svg>
+            Follow on TikTok
+          </a>
+          <a href="mailto:wagnerchristaa@gmail.com" class="connect__link connect__link--secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+            wagnerchristaa@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__left">
+        <span class="footer__copyright">&copy; 2026 Christa Wagner</span>
+        <span class="footer__credit">Website by <a href="https://palmweb.net" target="_blank" rel="noopener noreferrer">PalmWeb LLC</a></span>
+      </div>
+      <div class="footer__social">
+        <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.28 0 .56.04.82.11V9a6.27 6.27 0 0 0-.82-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.8a8.23 8.23 0 0 0 4.8 1.54V6.89a4.85 4.85 0 0 1-1.04-.2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== HEADER SCROLL ===== */
+    (function() {
+      var header = document.getElementById('header');
+      var lastScroll = 0;
+      window.addEventListener('scroll', function() {
+        var currentScroll = window.scrollY;
+        if (currentScroll > 40) {
+          header.classList.add('header--scrolled');
+        } else {
+          header.classList.remove('header--scrolled');
+        }
+        lastScroll = currentScroll;
+      }, { passive: true });
+    })();
+
+    /* ===== HAMBURGER MENU ===== */
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var mobileNav = document.getElementById('mobileNav');
+      var mobileLinks = mobileNav.querySelectorAll('a');
+
+      function toggleMenu() {
+        var isOpen = hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+        hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (mobileNav.classList.contains('active')) {
+            toggleMenu();
+          }
+        });
+      });
+
+      /* Close on Escape */
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    })();
+
+    /* ===== SCROLL REVEAL (IntersectionObserver) ===== */
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        /* Fallback: show all */
+        reveals.forEach(function(el) { el.classList.add('revealed'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    /* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+    (function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (href === '#') return;
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
