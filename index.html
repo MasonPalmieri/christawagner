@@ -765,9 +765,71 @@
     }
 
     .shop__inner {
-      max-width: var(--content-narrow);
+      max-width: 960px;
       margin: 0 auto;
       text-align: center;
+    }
+    .shop__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .shop__card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .shop__card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .shop__card-img {
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .shop__card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .shop__card:hover .shop__card-img img {
+      transform: scale(1.05);
+    }
+    .shop__card-info {
+      padding: 16px;
+      text-align: left;
+    }
+    .shop__card-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .shop__card-price {
+      font-size: 0.875rem;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+    .shop__cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .shop__cta-link:hover { opacity: 0.8; }
+    @media (max-width: 768px) {
+      .shop__grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     .shop__title {
@@ -1247,14 +1309,42 @@
     <!-- Shop -->
     <section class="section shop" id="shop">
       <div class="shop__inner">
-        <p class="section__label reveal">Coming Soon</p>
-        <h2 class="shop__title reveal reveal-delay-1">Shop My Favorites</h2>
-        <p class="shop__desc reveal reveal-delay-2">A curated collection of kitchen essentials, home finds, and things I use every day. Coming soon.</p>
-        <form class="shop__form reveal reveal-delay-3" onsubmit="event.preventDefault();">
-          <label for="shop-email" class="sr-only">Email address</label>
-          <input type="email" id="shop-email" class="shop__input" placeholder="Your email address" autocomplete="email">
-          <button type="submit" class="shop__btn">Notify Me</button>
-        </form>
+        <p class="section__label reveal">Shop</p>
+        <h2 class="shop__title reveal reveal-delay-1">Good Food, Old Houses</h2>
+        <p class="shop__desc reveal reveal-delay-2">A small collection of things inspired by our kitchen, our renovation, and this life we're building.</p>
+
+        <div class="shop__grid reveal reveal-delay-2">
+          <a href="#" class="shop__card">
+            <div class="shop__card-img"><img src="assets/mockup-mug.jpg" alt="Good Food Old Houses ceramic mug" loading="lazy"></div>
+            <div class="shop__card-info">
+              <p class="shop__card-name">Signature Mug</p>
+              <p class="shop__card-price">$22.99</p>
+            </div>
+          </a>
+          <a href="#" class="shop__card">
+            <div class="shop__card-img"><img src="assets/mockup-tote.jpg" alt="Canvas tote bag" loading="lazy"></div>
+            <div class="shop__card-info">
+              <p class="shop__card-name">Market Tote</p>
+              <p class="shop__card-price">$24.99</p>
+            </div>
+          </a>
+          <a href="#" class="shop__card">
+            <div class="shop__card-img"><img src="assets/mockup-crewneck.jpg" alt="Cozy crewneck sweatshirt" loading="lazy"></div>
+            <div class="shop__card-info">
+              <p class="shop__card-name">Cozy Crewneck</p>
+              <p class="shop__card-price">$44.99</p>
+            </div>
+          </a>
+          <a href="#" class="shop__card">
+            <div class="shop__card-img"><img src="assets/mockup-apron.jpg" alt="Kitchen apron" loading="lazy"></div>
+            <div class="shop__card-info">
+              <p class="shop__card-name">Kitchen Apron</p>
+              <p class="shop__card-price">$29.99</p>
+            </div>
+          </a>
+        </div>
+
+        <a href="#" class="shop__cta-link reveal reveal-delay-3">Visit the full shop &rarr;</a>
       </div>
     </section>
 
