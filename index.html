@@ -315,10 +315,10 @@
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      min-height: 85vh;
+      min-height: 78vh;
       display: flex;
       align-items: flex-end;
-      padding: var(--space-16) var(--space-6);
+      padding: var(--space-12) var(--space-6);
       overflow: hidden;
     }
 
@@ -369,9 +369,15 @@
       font-size: var(--text-3xl);
       font-weight: 400;
       color: #fff;
-      line-height: 1.08;
-      margin-bottom: var(--space-6);
-      max-width: 16ch;
+      line-height: 1.05;
+      margin-bottom: var(--space-5);
+      max-width: 14ch;
+      letter-spacing: -0.01em;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: #E8C9B8;
+      font-weight: 400;
     }
 
     .hero__subtitle {
@@ -761,11 +767,23 @@
 
     /* ===== SHOP ===== */
     .shop {
-      background: var(--color-surface);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2, #F3EEE6) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .shop::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: var(--color-accent);
+      opacity: 0.35;
     }
 
     .shop__inner {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
       text-align: center;
     }
@@ -807,14 +825,35 @@
     }
     .shop__card-name {
       font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 400;
+      font-size: 1.0625rem;
+      font-weight: 500;
       margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .shop__card-meta {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
     }
     .shop__card-price {
       font-size: 0.875rem;
       color: var(--color-accent);
       font-weight: 600;
+    }
+    .shop__footnote {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.02em;
+      margin-top: var(--space-4);
+    }
+    .shop__title-amp {
+      font-family: 'Zodiak', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-accent);
+      padding: 0 0.06em;
     }
     .shop__cta-link {
       display: inline-flex;
@@ -1140,7 +1179,7 @@
     </div>
     <div class="hero__content">
       <p class="hero__label reveal">Cooking · Renovating · Living</p>
-      <h1 class="hero__title reveal reveal-delay-1">Good food, old houses, and everything in between.</h1>
+      <h1 class="hero__title reveal reveal-delay-1">Good food, old houses, <em>&amp;</em> everything in between.</h1>
       <p class="hero__subtitle reveal reveal-delay-2">I'm Christa — a home cook, renovation enthusiast, and lover of all things cozy. Welcome to my corner of New England.</p>
       <a href="https://www.tiktok.com/@christaawagner" target="_blank" rel="noopener noreferrer" class="hero__cta reveal reveal-delay-3">
         Follow Along
@@ -1291,42 +1330,46 @@
     <!-- Shop -->
     <section class="section shop" id="shop">
       <div class="shop__inner">
-        <p class="section__label reveal">Shop</p>
-        <h2 class="shop__title reveal reveal-delay-1">Good Food, Old Houses</h2>
-        <p class="shop__desc reveal reveal-delay-2">A small collection of things inspired by our kitchen, our renovation, and this life we're building.</p>
+        <p class="section__label reveal">The Shop</p>
+        <h2 class="shop__title reveal reveal-delay-1">Good Food <span class="shop__title-amp">&amp;</span> Old Houses</h2>
+        <p class="shop__desc reveal reveal-delay-2">A small, hand-designed collection inspired by our kitchen, our renovation, and this life we're building. Printed on-demand and shipped from the US.</p>
 
         <div class="shop__grid reveal reveal-delay-2">
           <a href="https://buy.stripe.com/4gM9ATcHs8wR2PweqK67S00" target="_blank" rel="noopener noreferrer" class="shop__card">
-            <div class="shop__card-img"><img src="assets/product-mug-clean.jpg" alt="Good Food Old Houses ceramic mug" loading="lazy"></div>
+            <div class="shop__card-img"><img src="assets/product-v2-mug.png" alt="Good Food & Old Houses ceramic mug" loading="lazy"></div>
             <div class="shop__card-info">
               <p class="shop__card-name">Signature Mug</p>
+              <p class="shop__card-meta">11oz ceramic · dishwasher safe</p>
               <p class="shop__card-price">$22.99</p>
             </div>
           </a>
           <a href="https://buy.stripe.com/9B69ATazk3cx75M5Ue67S01" target="_blank" rel="noopener noreferrer" class="shop__card">
-            <div class="shop__card-img"><img src="assets/product-tote-clean.jpg" alt="Canvas tote bag" loading="lazy"></div>
+            <div class="shop__card-img"><img src="assets/product-v2-tote.png" alt="Natural canvas market tote" loading="lazy"></div>
             <div class="shop__card-info">
               <p class="shop__card-name">Market Tote</p>
+              <p class="shop__card-meta">Heavyweight natural canvas</p>
               <p class="shop__card-price">$24.99</p>
             </div>
           </a>
           <a href="https://buy.stripe.com/00wfZh22O7sN3TA5Ue67S02" target="_blank" rel="noopener noreferrer" class="shop__card">
-            <div class="shop__card-img"><img src="assets/product-crewneck-clean.jpg" alt="Cozy crewneck sweatshirt" loading="lazy"></div>
+            <div class="shop__card-img"><img src="assets/product-v2-crewneck.png" alt="Cream crewneck sweatshirt" loading="lazy"></div>
             <div class="shop__card-info">
               <p class="shop__card-name">Cozy Crewneck</p>
+              <p class="shop__card-meta">Midweight fleece · unisex</p>
               <p class="shop__card-price">$44.99</p>
             </div>
           </a>
           <a href="https://buy.stripe.com/14AdR9ePA3cx4XEbey67S03" target="_blank" rel="noopener noreferrer" class="shop__card">
-            <div class="shop__card-img"><img src="assets/product-apron-clean.jpg" alt="Kitchen apron" loading="lazy"></div>
+            <div class="shop__card-img"><img src="assets/product-v2-apron.png" alt="Natural linen kitchen apron" loading="lazy"></div>
             <div class="shop__card-info">
               <p class="shop__card-name">Kitchen Apron</p>
+              <p class="shop__card-meta">Linen-cotton blend · adjustable</p>
               <p class="shop__card-price">$29.99</p>
             </div>
           </a>
         </div>
 
-        <a href="#" class="shop__cta-link reveal reveal-delay-3">Visit the full shop &rarr;</a>
+        <p class="shop__footnote reveal reveal-delay-3">Free US shipping on orders over $50 &middot; Printed on-demand, made just for you</p>
       </div>
     </section>
 
