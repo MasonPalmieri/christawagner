@@ -1011,6 +1011,83 @@
     }
 
     /* ===== FOOTER ===== */
+    /* ===== SITE CTA STRIP (Creator Shop in a Box promo) ===== */
+    .site-cta {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: clamp(var(--space-8), 5vw, var(--space-12)) var(--space-6);
+    }
+    .site-cta__inner {
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr auto;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    @media (max-width: 720px) {
+      .site-cta__inner { grid-template-columns: 1fr; gap: var(--space-5); text-align: center; }
+    }
+    .site-cta__label {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--color-text);
+      margin: 0 0 var(--space-2);
+      line-height: 1.2;
+    }
+    .site-cta__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 56ch;
+    }
+    .site-cta__links {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .site-cta__btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      text-decoration: none;
+      color: var(--color-text);
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      min-width: 140px;
+    }
+    .site-cta__btn:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(196,120,91,0.15);
+    }
+    .site-cta__btn span {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 2px;
+    }
+    .site-cta__btn strong {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+    .site-cta__btn--alt {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+    .site-cta__btn--alt span { color: rgba(255,255,255,0.75); }
+    .site-cta__btn--alt strong { color: #fff; }
+    .site-cta__btn--alt:hover { background: var(--color-accent-hover); }
+
     .footer {
       padding: var(--space-8) var(--space-6);
       border-top: 1px solid var(--color-border);
@@ -1401,6 +1478,24 @@
       </div>
     </section>
   </main>
+
+  <!-- Subtle 'get your own site' CTA strip -->
+  <aside class="site-cta" aria-label="Creator Shop in a Box">
+    <div class="site-cta__inner">
+      <div class="site-cta__text">
+        <p class="site-cta__label">Like this site?</p>
+        <p class="site-cta__desc">You can get your own just like it. A ready-to-launch merch store for creators — site template, auto-fulfillment, and a 40-page guide.</p>
+      </div>
+      <div class="site-cta__links">
+        <a href="https://buy.stripe.com/eVqaEZcrZe0qasV1xe9Ve00" target="_blank" rel="noopener noreferrer" class="site-cta__btn">
+          <span>DIY Kit</span><strong>$99</strong>
+        </a>
+        <a href="https://buy.stripe.com/7sYdRb4Zxg8y9oRgs89Ve01" target="_blank" rel="noopener noreferrer" class="site-cta__btn site-cta__btn--alt">
+          <span>Done-For-You</span><strong>$299</strong>
+        </a>
+      </div>
+    </div>
+  </aside>
 
   <!-- Footer -->
   <footer class="footer">
